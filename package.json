@@ -9,7 +9,7 @@
   "dependencies": {
     "cypress": "^3.4.1",
     "lighthouse": "^5.2.0",
-    "puppeteer": "1.14.0",
+    "puppeteer": "^1.19.0",
     "puppeteer-cluster": "^0.16.0",
     "wappalyzer": "^5.8.3"
   }
