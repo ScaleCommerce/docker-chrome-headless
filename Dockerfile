@@ -33,13 +33,13 @@ USER chrome
 RUN npm install && \
     ln -sf ./node_modules/.bin/cypress cypress && \
     ./cypress verify && \
-    echo "NodeJS Version is $(node -v)" >> help.txt && \
-    echo "Wappalyzer Version is $(npm info wappalyzer version)" >> help.txt && \
-    echo "Lighthouse Version is $(npm info lighthouse version)" >> help.txt && \
-    echo "Puppeteer Version is $(npm info puppeteer version)" >> help.txt && \
-    echo "Cypress Version is $(npm info cypress version)" >> help.txt && \
-    echo "Chrome Version is $(node chrome-version.js)" >> help.txt && \
+    echo "NodeJS version is $(node -v)" >> help.txt && \
+    echo "npm version is $(npm -v)" >> help.txt && \
+    echo "Wappalyzer version is $(npm info wappalyzer version)" >> help.txt && \
+    echo "Lighthouse version is $(npm info lighthouse version)" >> help.txt && \
+    echo "Puppeteer version is $(npm info puppeteer version)" >> help.txt && \
+    echo "Cypress version is $(npm info cypress version)" >> help.txt && \
+    echo "Chrome version is $(node chrome-version.js)" >> help.txt && \
     echo "" >> help.txt
-
 
 CMD ["/bin/bash", "-l"]
