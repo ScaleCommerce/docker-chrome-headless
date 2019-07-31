@@ -1,0 +1,11 @@
+Welcome! This is scalecommerce/chrome-headless
+
+example commands:
+  
+  wappalyzer https://www.google.com
+
+  lighthouse --chrome-flags="--headless --no-sandbox" http://www.google.com
+
+  cypress run
+
+  

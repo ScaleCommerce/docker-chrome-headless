@@ -1,0 +1,3 @@
+#!/bin/bash
+cd reports
+../node_modules/.bin/lighthouse $@ --chrome-flags="--headless --no-sandbox" --output html --output json
