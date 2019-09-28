@@ -15,8 +15,12 @@ Intsalling all of these packages makes the image huge (1.3 GB) :-( It's currentl
 # find out what technologies are used on the site
 docker run -ti --rm scalecommerce/chrome-headless wappalyzer https://www.google.com/
 
-# get lighthouse report
+# get lighthouse report as html in current directory
 docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lighthouse https://www.google.com/
+
+# get lighthouse report as json on stdout
+docker run -ti --rm scalecommerce/chrome-headless lighthouse --output json --output-path stdout https://www.google.com/
+
 
 # don't limit network and emulate desktop
 docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lighthouse https://www.google.com/ --throttling-method=devtools --throttling.requestLatencyMs=0 --throttling.downloadThroughputKbps=0 --throttling.uploadThroughputKbps=0 --emulatedFormFactor=desktop
@@ -25,11 +29,11 @@ docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lightho
 
 ## versions
 ```
-NodeJS version is v12.7.0
-npm version is 6.10.0
-Wappalyzer version is 5.8.3
-Lighthouse version is 5.2.0
-Puppeteer version is 1.19.0
+NodeJS version is v12.10.0
+npm version is 6.10.3
+Wappalyzer version is 5.8.4
+Lighthouse version is 5.4.0
+Puppeteer version is 1.20.0
 Cypress version is 3.4.1
-Chrome version is HeadlessChrome/76.0.3809.87
+Chrome version is HeadlessChrome/77.0.3865.90
 ```
