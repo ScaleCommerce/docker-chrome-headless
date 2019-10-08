@@ -3,6 +3,7 @@
 const args = process.argv.slice(2);
 
 const url = args.shift() || '';
+const filename = args.shift() || '';
 
 if (!url) {
   process.stderr.write('No URL specified\n');
@@ -30,11 +31,16 @@ const options = {
 const Wappalyzer = require('wappalyzer/driver.js');
 const Browser = require('./puppeteer.js');
 const wappalyzer = new Wappalyzer(Browser, url, options);
+const fs = require('fs');
 
 wappalyzer.analyze()
   .then(json => {
-    process.stdout.write(`${JSON.stringify(json, null, 2)}\n`);
- 
+    if (!filename) {
+      process.stdout.write(`${JSON.stringify(json, null, 2)}\n`);
+    } else {
+
+      fs.writeFileSync("/opt/reports/" + filename, `${JSON.stringify(json, null, 2)}\n`);
+    }
     process.exit(0);
   })
   .catch(error => {

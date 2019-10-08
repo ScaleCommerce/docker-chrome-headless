@@ -15,6 +15,9 @@ Intsalling all of these packages makes the image huge (1.3 GB) :-( It's currentl
 # find out what technologies are used on the site
 docker run -ti --rm scalecommerce/chrome-headless wappalyzer https://www.google.com/
 
+# save technologies to json file
+docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless wappalyzer https://www.google.com/ result.json
+
 # get lighthouse report as html in current directory
 docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lighthouse https://www.google.com/
 
