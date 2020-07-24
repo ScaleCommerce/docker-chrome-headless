@@ -32,11 +32,11 @@ docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lightho
 
 ## versions
 ```
-NodeJS version is v12.18.1
-npm version is 6.14.5
+NodeJS version is v12.18.3
+npm version is 6.14.6
 Wappalyzer version is 6.0.12
-Lighthouse version is 6.1.0
-Puppeteer version is 4.0.1
-Cypress version is 4.9.0
-Chrome version is HeadlessChrome/83.0.4103.116
+Lighthouse version is 6.1.1
+Puppeteer version is 5.2.1
+Cypress version is 4.11.0
+Chrome version is HeadlessChrome/84.0.4147.89
 ```
