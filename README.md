@@ -37,4 +37,5 @@ npm version is 6.14.11
 Wappalyzer version is 6.5.26
 Lighthouse version is 7.1.0
 Puppeteer version is 7.1.0
+Google Chrome 88.0.4324.182
 ```

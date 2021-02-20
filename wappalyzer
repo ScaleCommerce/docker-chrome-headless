@@ -1,2 +1,2 @@
 #!/bin/bash
-node_modules/.bin/wapalyzer "$@" --pretty
+node_modules/.bin/wappalyzer "$@" --pretty
