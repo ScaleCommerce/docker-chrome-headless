@@ -1,24 +1,24 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-ENV CHROME_BIN=/usr/bin/google-chrome \
+ENV CHROMIUM_BIN=/usr/bin/google-chrome \
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     WORKDIR=/opt \
     DEBIAN_FRONTEND=noninteractive \
     APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true \
     CI=1 \
-    PATH=/opt/:$PATH
+    PATH=/opt/:/opt/node_modules/.bin/:$PATH
 
-COPY puppeteer.js package.json wappalyzer chrome-version.js wappalyzer lighthouse help.txt $WORKDIR/
+COPY wappalyzer lighthouse help.txt $WORKDIR/
 
 WORKDIR $WORKDIR
 
 RUN apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get install -y --no-install-recommends ca-certificates wget gnupg apt-utils coreutils nano lsb-release&& \
+    apt-get install -y --no-install-recommends ca-certificates wget gnupg apt-utils coreutils nano lsb-release && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
-    wget -q -O - https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs google-chrome-stable xvfb libgconf-2-4 libnss3 && \
+    wget -q -O - https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs google-chrome-stable && \
     apt-get -y --purge autoremove && \
     apt-get -y autoclean && \
     rm -rf /var/lib/apt/* && \
@@ -30,16 +30,17 @@ RUN apt-get update && \
 
 USER chrome
 
-RUN npm install && \
-    ln -sf ./node_modules/.bin/cypress cypress && \
-    ./cypress verify && \
+RUN npm install --no-save lighthouse && \
+    npm install --no-save wappalyzer && \
+    npm install --no-save puppeteer && \
+    npm prune && \
+    npm cache clean --force && \
     echo "NodeJS version is $(node -v)" >> help.txt && \
     echo "npm version is $(npm -v)" >> help.txt && \
     echo "Wappalyzer version is $(npm info wappalyzer version)" >> help.txt && \
     echo "Lighthouse version is $(npm info lighthouse version)" >> help.txt && \
     echo "Puppeteer version is $(npm info puppeteer version)" >> help.txt && \
-    echo "Cypress version is $(npm info cypress version)" >> help.txt && \
-    echo "Chrome version is $(node chrome-version.js)" >> help.txt && \
+    echo $(google-chrome --version) >> help.txt && \
     echo "" >> help.txt
 
 CMD ["/bin/bash", "-l"]
