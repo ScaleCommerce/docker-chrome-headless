@@ -6,6 +6,4 @@ example commands:
 
   lighthouse --chrome-flags="--headless --no-sandbox" http://www.google.com
 
-  cypress run
-
 

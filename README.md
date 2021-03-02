@@ -26,16 +26,15 @@ docker run -ti --rm scalecommerce/chrome-headless lighthouse --output json --out
 
 
 # don't limit network and emulate desktop
-docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lighthouse https://www.google.com/ --throttling-method=devtools --throttling.requestLatencyMs=0 --throttling.downloadThroughputKbps=0 --throttling.uploadThroughputKbps=0 --emulatedFormFactor=desktop
+docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lighthouse https://www.google.com/ --throttling-method provided --preset desktop
 
 ```
 
 ## versions
 ```
-NodeJS version is v14.15.5
+NodeJS version is v14.16.0
 npm version is 6.14.11
 Wappalyzer version is 6.5.26
-Lighthouse version is 7.1.0
-Puppeteer version is 7.1.0
-Google Chrome 88.0.4324.182
-```
+Lighthouse version is 7.2.0
+Puppeteer version is 8.0.0
+Google Chrome 88.0.4324.182```

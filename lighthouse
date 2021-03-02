@@ -1,3 +1,3 @@
 #!/bin/bash
 cd reports
-../node_modules/.bin/lighthouse "$@" --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu"
+../node_modules/.bin/lighthouse "$@" --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu" --max-wait-for-load 60000
