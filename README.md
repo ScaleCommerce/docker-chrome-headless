@@ -7,7 +7,7 @@ This image is mainly for automated testing. It provides:
 * [Wappalyzer](https://github.com/AliasIO/Wappalyzer)
 * [cypress](https://www.cypress.io)
 
-Intsalling all of these packages makes the image huge (1.3 GB) :-( It's currently based on Ubuntu 18.04, we've also tried Alpine, but this results in only 100 MB less. Diskspace is mainly eaten up by Node-Dependecies (350 MB), Cypress (500 MB) and Google Chrome (200 MB). We're open to suggestions how to minimize this.
+Intsalling all of these packages makes the image huge (1.3 GB) :-( It's currently based on Ubuntu 20.04, we've also tried Alpine, but this results in only 100 MB less. Diskspace is mainly eaten up by Node-Dependecies (350 MB), Cypress (500 MB) and Google Chrome (200 MB). We're open to suggestions how to minimize this.
 
 ## example usage
 
@@ -32,10 +32,9 @@ docker run -ti --rm -v $(pwd):/opt/reports scalecommerce/chrome-headless lightho
 
 ## versions
 ```
-NodeJS version is v14.16.0
-npm version is 6.14.11
-Wappalyzer version is 6.5.30
-Lighthouse version is 7.3.0
-Puppeteer version is 8.0.0
-Google Chrome 89.0.4389.90
+NodeJS version is v20.11.0
+npm version is 10.2.4
+Lighthouse version is 11.5.0
+Puppeteer version is 21.10.0
+Google Chrome 121.0.6167.139
 ```

@@ -8,7 +8,7 @@ ENV CHROMIUM_BIN=/usr/bin/google-chrome \
     CI=1 \
     PATH=/opt/:/opt/node_modules/.bin/:$PATH
 
-COPY wappalyzer lighthouse help.txt $WORKDIR/
+COPY lighthouse help.txt $WORKDIR/
 
 WORKDIR $WORKDIR
 
@@ -17,7 +17,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates wget gnupg apt-utils coreutils nano lsb-release && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
-    wget -q -O - https://deb.nodesource.com/setup_14.x | bash - && \
+    wget -q -O - https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y --no-install-recommends nodejs google-chrome-stable && \
     apt-get -y --purge autoremove && \
     apt-get -y autoclean && \
@@ -30,14 +30,12 @@ RUN apt-get update && \
 
 USER chrome
 
-RUN npm install --no-save lighthouse && \
-    npm install --no-save wappalyzer && \
-    npm install --no-save puppeteer && \
+RUN npm install lighthouse && \
+    npm install puppeteer && \
     npm prune && \
     npm cache clean --force && \
     echo "NodeJS version is $(node -v)" >> help.txt && \
     echo "npm version is $(npm -v)" >> help.txt && \
-    echo "Wappalyzer version is $(npm info wappalyzer version)" >> help.txt && \
     echo "Lighthouse version is $(npm info lighthouse version)" >> help.txt && \
     echo "Puppeteer version is $(npm info puppeteer version)" >> help.txt && \
     echo $(google-chrome --version) >> help.txt && \
